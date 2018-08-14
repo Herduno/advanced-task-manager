@@ -1,0 +1,89 @@
+;
+; ProcessInfo.inf
+;
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=Sample ; TODO: edit Class
+ClassGuid={78A1C341-4539-11d3-B88D-00C04FAD5171} ; TODO: edit ClassGuid
+Provider=%ManufacturerName%
+CatalogFile=ProcessInfo.cat
+DriverVer = 08/13/2018,23.54.29.419
+
+[DestinationDirs]
+DefaultDestDir = 12
+ProcessInfo_Device_CoInstaller_CopyFiles = 11
+
+; ================= Class section =====================
+
+[ClassInstall32]
+Addreg=SampleClassReg
+
+[SampleClassReg]
+HKR,,,0,%ClassName%
+HKR,,Icon,,-5
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+ProcessInfo.sys  = 1,,
+;
+
+
+;*****************************************
+; Install Section
+;*****************************************
+
+[Manufacturer]
+%ManufacturerName%=Standard,NTamd64
+
+[Standard.NTamd64]
+%ProcessInfo.DeviceDesc%=ProcessInfo_Device, Root\ProcessInfo ; TODO: edit hw-id
+
+[ProcessInfo_Device.NT]
+CopyFiles=Drivers_Dir
+
+[Drivers_Dir]
+ProcessInfo.sys
+
+;-------------- Service installation
+[ProcessInfo_Device.NT.Services]
+AddService = ProcessInfo,%SPSVCINST_ASSOCSERVICE%, ProcessInfo_Service_Inst
+
+; -------------- ProcessInfo driver install sections
+[ProcessInfo_Service_Inst]
+DisplayName    = %ProcessInfo.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\ProcessInfo.sys
+
+;
+;--- ProcessInfo_Device Coinstaller installation ------
+;
+
+[ProcessInfo_Device.NT.CoInstallers]
+AddReg=ProcessInfo_Device_CoInstaller_AddReg
+CopyFiles=ProcessInfo_Device_CoInstaller_CopyFiles
+
+[ProcessInfo_Device_CoInstaller_AddReg]
+;
+
+
+[ProcessInfo_Device_CoInstaller_CopyFiles]
+;
+
+
+[ProcessInfo_Device.NT.Wdf]
+KmdfService =  ProcessInfo, ProcessInfo_wdfsect
+[ProcessInfo_wdfsect]
+KmdfLibraryVersion = 1.15
+
+[Strings]
+SPSVCINST_ASSOCSERVICE= 0x00000002
+ManufacturerName="<Your manufacturer name>" ;TODO: Replace with your manufacturer name
+ClassName="Samples" ; TODO: edit ClassName
+DiskName = "ProcessInfo Installation Disk"
+ProcessInfo.DeviceDesc = "ProcessInfo Device"
+ProcessInfo.SVCDESC = "ProcessInfo Service"

@@ -1,0 +1,9 @@
+﻿  Moc'ing advancedsystemmonitor.h...
+  Rcc'ing advancedsystemmonitor.qrc...
+  Uic'ing advancedsystemmonitor.ui...
+  RCC: Warning: No resources in 'D:\Progetti\Programmazione\Advanced-System-Monitor\Advanced System Monitor\Advanced System Monitor\advancedsystemmonitor.qrc'.
+  advancedsystemmonitor.cpp
+  main.cpp
+  moc_advancedsystemmonitor.cpp
+  qrc_advancedsystemmonitor.cpp
+  Advanced System Monitor.vcxproj -> D:\Progetti\Programmazione\Advanced-System-Monitor\Advanced System Monitor\x64\Debug\Advanced System Monitor.exe

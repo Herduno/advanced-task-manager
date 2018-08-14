@@ -1,0 +1,27 @@
+﻿  Building 'Process Info' with toolset 'WindowsKernelModeDriver10.0' and the 'Universal' target platform.
+  Stamping x64\Debug\ProcessInfo.inf
+  Stamping [Version] section with DriverVer=08/13/2018,23.54.29.419
+  DriverEntry.c
+d:\progetti\programmazione\advanced-system-monitor\advanced system monitor\process info\ntf.h(1148): warning C4273: 'ZwAllocateVirtualMemory': collegamento dll non coerente
+  d:\windows kits\10\include\10.0.17134.0\km\ntifs.h(26990): note: vedere la precedente definizione di 'ZwAllocateVirtualMemory'
+d:\progetti\programmazione\advanced-system-monitor\advanced system monitor\process info\ntf.h(1154): warning C4273: 'ZwFreeVirtualMemory': collegamento dll non coerente
+  d:\windows kits\10\include\10.0.17134.0\km\ntifs.h(27007): note: vedere la precedente definizione di 'ZwFreeVirtualMemory'
+  Process Info.vcxproj -> D:\Progetti\Programmazione\Advanced-System-Monitor\Advanced System Monitor\x64\Debug\ProcessInfo.sys
+  Done Adding Additional Store
+  Successfully signed: D:\Progetti\Programmazione\Advanced-System-Monitor\Advanced System Monitor\x64\Debug\ProcessInfo.sys
+  
+  Driver is a Universal Driver.
+  ........................
+  Signability test complete.
+  
+  Errors:
+  None
+  
+  Warnings:
+  None
+  
+  Catalog generation complete.
+  D:\Progetti\Programmazione\Advanced-System-Monitor\Advanced System Monitor\x64\Debug\Process Info\processinfo.cat
+  Done Adding Additional Store
+  Successfully signed: D:\Progetti\Programmazione\Advanced-System-Monitor\Advanced System Monitor\x64\Debug\Process Info\processinfo.cat
+  
