@@ -16,4 +16,16 @@ typedef struct _PID_LIST
 	SIZE_T nPid;
 }PID_LIST, *PPID_LIST, *LPPID_LIST;
 
+
+typedef struct __EPROCESS
+{
+	_KPROCESS Pcb;
+	EX_PUSH_LOCK ProcessLock;
+	_EX_RUNDOWN_REF RundownProtect;
+	PVOID UniqueProcessId;
+	_LIST_ENTRY ActiveProcessLinks;
+	DWORD Flags2;
+} PROCESS, *PPROCESS;
+
+
 #endif

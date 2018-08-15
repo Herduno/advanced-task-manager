@@ -1,0 +1,3 @@
+﻿  Driver Test.cpp
+d:\progetti\programmazione\advanced-task-manager\advanced system monitor\driver test\driver test.cpp(41): warning C4806: '==': operazione non affidabile: nessun valore di tipo 'bool' promosso al tipo 'int' può eguagliare la costante data
+  Driver Test.vcxproj -> D:\Progetti\Programmazione\advanced-task-manager\Advanced System Monitor\x64\Debug\Driver Test.exe

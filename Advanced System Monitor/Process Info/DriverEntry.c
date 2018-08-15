@@ -1,8 +1,11 @@
 #include "Major Functions.h"
+#include "IoControl.h"
 
 NTSTATUS DriverEntry(PDRIVER_OBJECT pDriverObject, PUNICODE_STRING RegistryPath)
 {
 	NTSTATUS Status = STATUS_SUCCESS;
+
+	DbgPrint("DriverLoaded\r\n");
 
 	//Initialization of global strings.
 	RtlInitUnicodeString(&DeviceName, L"\\Device\\ASM Process Info Service");
@@ -28,6 +31,7 @@ NTSTATUS DriverEntry(PDRIVER_OBJECT pDriverObject, PUNICODE_STRING RegistryPath)
 	//Set up driver options and major fuctions
 	pDriverObject->MajorFunction[IRP_MJ_CREATE] = CreateCall;
 	pDriverObject->MajorFunction[IRP_MJ_CLOSE] = CloseCall;
+	pDriverObject->MajorFunction[IRP_MJ_DEVICE_CONTROL] = IoControl;
 	pDriverObject->DriverUnload = UnloadDriver;
 
 	return Status;

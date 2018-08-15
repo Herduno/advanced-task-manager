@@ -6,6 +6,8 @@
 
 NTSTATUS CreateCall(PDEVICE_OBJECT pDeviceObject, PIRP pIrp)
 {
+	DbgPrint("Call Created\r\n");
+	
 	pIrp->IoStatus.Status = STATUS_SUCCESS;
 	pIrp->IoStatus.Information = 0;
 	IoCompleteRequest(pIrp, IO_NO_INCREMENT);
@@ -14,6 +16,8 @@ NTSTATUS CreateCall(PDEVICE_OBJECT pDeviceObject, PIRP pIrp)
 
 NTSTATUS CloseCall(PDEVICE_OBJECT pDeviceObject, PIRP pIrp)
 {
+	DbgPrint("Call Closed\r\n");
+	
 	pIrp->IoStatus.Status = STATUS_SUCCESS;
 	pIrp->IoStatus.Information = 0;
 	IoCompleteRequest(pIrp, IO_NO_INCREMENT);
@@ -22,6 +26,8 @@ NTSTATUS CloseCall(PDEVICE_OBJECT pDeviceObject, PIRP pIrp)
 
 VOID UnloadDriver(PDRIVER_OBJECT pDriverObject)
 {
+	DbgPrint("Unload device\r\n");
+	
 	IoDeleteSymbolicLink(&SymbolicLinkName);
 	IoDeleteDevice(pDeviceObject);
 }

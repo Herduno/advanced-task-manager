@@ -11,6 +11,9 @@
 
 #define GET_RECORD(Start, Offset, TypeCast)((TypeCast)((Start + Offset)))
 
+
+
+
 NTSTATUS IoControl(PDEVICE_OBJECT pDeviceObject, PIRP pIrp)
 {
 	PIO_STACK_LOCATION StackLocation = IoGetCurrentIrpStackLocation(pIrp);
@@ -26,12 +29,13 @@ NTSTATUS IoControl(PDEVICE_OBJECT pDeviceObject, PIRP pIrp)
 		PEPROCESS StartProcess = PsGetCurrentProcess();
 
 		PLIST_ENTRY HeadList = (PLIST_ENTRY)((INT)StartProcess + 0x2F0);
+		//PLIST_ENTRY List = CONTAINING_RECORD(StartProcess + 0x2F0, EPROCESS, LIST_ENTRY);
 
-		DbgPrint("List entry Blink: %llu", HeadList->Blink);
-		DbgPrint("List entry Flink: %llu", HeadList->Flink);
+		DbgPrint("List entry Blink: %llu", (unsigned long long)HeadList->Blink);
+		DbgPrint("List entry Flink: %llu", (unsigned long long)HeadList->Flink);
 
 		pIrp->IoStatus.Status = STATUS_SUCCESS;
-		pIrp->IoStatus.Information = 0;
+		pIrp->IoStatus.Information = sizeof(PPID_LIST);
 	}
 	else
 	{
